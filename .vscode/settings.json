@@ -1,0 +1,7 @@
+{
+    "vscode-edge-devtools.defaultUrl": "http://127.0.0.1:5173/",
+    "vscode-edge-devtools.webRoot": "${workspaceFolder}",
+    "vscode-edge-devtools.userDataDir": "${workspaceFolder}/.vscode/edge-devtools-profile",
+    "vscode-edge-devtools.headless": false,
+    "vscode-edge-devtools.timeout": 30000
+}

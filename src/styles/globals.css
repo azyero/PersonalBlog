@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全站基础样式与明暗主题底色。 */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-paper-50 text-ink-800 antialiased transition-colors duration-300 dark:bg-paper-900 dark:text-paper-100;
+    background-image:
+      radial-gradient(circle at 12% 12%, rgba(157, 104, 52, 0.08), transparent 24rem),
+      radial-gradient(circle at 88% 30%, rgba(111, 122, 66, 0.08), transparent 28rem);
+    font-family: Georgia, 'Times New Roman', 'Noto Serif', serif;
+  }
+
+  html.dark body {
+    background-image:
+      radial-gradient(circle at 82% 18%, rgba(197, 139, 77, 0.12), transparent 28rem),
+      radial-gradient(circle at 14% 18%, rgba(111, 122, 66, 0.08), transparent 22rem);
+  }
+
+  ::selection {
+    @apply bg-olive-500 text-white;
+  }
+}
+
+/* 可复用的布局与富文本样式工具类。 */
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* 键盘导航时统一的焦点环。 */
+  .focus-ring {
+    @apply outline-none ring-offset-2 ring-offset-paper-50 focus-visible:ring-2 focus-visible:ring-olive-500 dark:ring-offset-paper-900;
+  }
+
+  /* 页面中复用的半透明表面容器。 */
+  .surface {
+    @apply border border-antique-500/15 bg-white/50 shadow-soft backdrop-blur-sm dark:border-antique-400/15 dark:bg-white/[0.04] dark:shadow-soft-dark;
+  }
+
+  /* Markdown 文章正文的排版规则。 */
+  .article-content {
+    @apply text-lg leading-8 text-ink-800 dark:text-paper-100;
+  }
+
+  .article-content > * + * {
+    @apply mt-6;
+  }
+
+  .article-content h2 {
+    @apply mt-12 font-serif text-3xl font-semibold leading-tight text-ink-900 dark:text-paper-50;
+  }
+
+  .article-content h3 {
+    @apply mt-10 font-serif text-2xl font-semibold leading-tight text-ink-900 dark:text-paper-50;
+  }
+
+  .article-content p {
+    @apply text-ink-800/90 dark:text-paper-100/85;
+  }
+
+  .article-content a {
+    @apply text-antique-600 underline decoration-antique-500/30 underline-offset-4 transition hover:decoration-antique-500 dark:text-antique-400;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    @apply ml-6 space-y-2;
+  }
+
+  .article-content ul {
+    @apply list-disc;
+  }
+
+  .article-content ol {
+    @apply list-decimal;
+  }
+
+  .article-content blockquote {
+    @apply border-l-4 border-olive-500/40 pl-5 text-ink-500 dark:text-paper-100/70;
+  }
+
+  .article-content table {
+    @apply block w-full overflow-x-auto rounded-2xl border border-antique-500/15 text-base dark:border-antique-400/15;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 42rem;
+  }
+
+  .article-content thead {
+    @apply bg-antique-500/10 text-ink-900 dark:bg-antique-400/10 dark:text-paper-50;
+  }
+
+  .article-content th,
+  .article-content td {
+    @apply border-b border-r border-antique-500/15 px-4 py-3 align-top dark:border-antique-400/15;
+    min-width: 10rem;
+  }
+
+  .article-content th {
+    @apply text-left font-semibold;
+  }
+
+  .article-content th:last-child,
+  .article-content td:last-child {
+    @apply border-r-0;
+  }
+
+  .article-content tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .article-content code {
+    @apply rounded bg-antique-500/10 px-1.5 py-0.5 text-base text-antique-600 dark:bg-antique-400/10 dark:text-antique-400;
+  }
+
+  .article-content pre {
+    @apply overflow-x-auto rounded-2xl border border-antique-500/15 bg-ink-900 p-5 text-sm leading-6 shadow-soft dark:border-antique-400/15;
+  }
+
+  .article-content pre code {
+    @apply bg-transparent p-0 text-paper-50;
+  }
+
+  .article-content hr {
+    @apply my-10 border-antique-500/20;
+  }
+}

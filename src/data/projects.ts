@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: '星命思',
     description: '个人项目入口。',
     tech: ['Web 应用'],
-    href: 'https://xiaonainiu.cn/xms/',
+    href: 'https://xiaonainiu.cn/xms/bazi',
     featured: true,
   },
   {

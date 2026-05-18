@@ -22,7 +22,7 @@ import { onMounted, ref } from 'vue';
 
 // 本地存储键名与当前主题状态。
 const storageKey = 'murmur-theme';
-const isDark = ref(false);
+const isDark = ref(document.documentElement.classList.contains('dark'));
 
 // 同步响应式状态、根节点 class 与浏览器主题色。
 function applyTheme(nextIsDark: boolean) {
@@ -55,7 +55,7 @@ onMounted(() => {
     savedTheme = null;
   }
 
-  // 首次挂载时把已保存主题应用到页面。
-  applyTheme(savedTheme === 'dark');
+  // 没有历史偏好时默认进入深色模式。
+  applyTheme(savedTheme !== 'light');
 });
 </script>
